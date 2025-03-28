@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat | G4F</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <div class="row g-0 vh-100">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar p-3 border-end">
+                <!-- Logo and Title -->
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fas fa-robot me-2 fs-4"></i>
+                    <h5 class="mb-0 fw-bold">AI Chat</h5>
+                </div>
+                
+                <!-- New Chat Button -->
+                <div class="mb-4">
+                    <button id="new-chat-btn" class="btn btn-outline-primary w-100 d-flex align-items-center">
+                        <i class="fas fa-plus me-2"></i> New Chat
+                    </button>
+                </div>
+                
+                <!-- Model Selection -->
+                <div class="mb-4">
+                    <label for="model-select" class="form-label small text-muted">Model</label>
+                    <select id="model-select" class="form-select">
+                        <option value="gpt-4o-mini" selected>GPT-4o Mini</option>
+                        <!-- Other models will be loaded dynamically -->
+                    </select>
+                </div>
+                
+                <!-- Chat History -->
+                <div class="chat-history mb-3">
+                    <label class="form-label small text-muted mb-2">Chat History</label>
+                    <ul id="history-list" class="list-group chat-history-list mb-0">
+                        <!-- Chat history items will appear here -->
+                    </ul>
+                </div>
+                
+                <!-- App Info -->
+                <div class="mt-auto text-center text-secondary small pt-5">
+                    <p class="mb-1">Powered by g4f</p>
+                    <p>© 2025 AI Chat. All rights reserved.</p>
+                </div>
+            </div>
+            
+            <!-- Main Chat Area -->
+            <div class="col-md-9 col-lg-10 main-content d-flex flex-column p-0">
+                <!-- Chat Header -->
+                <div class="chat-header p-3 border-bottom d-flex align-items-center">
+                    <h6 class="mb-0">Chat with AI</h6>
+                    <span class="model-badge ms-2">GPT-4o Mini</span>
+                </div>
+                
+                <!-- Messages Container -->
+                <div id="messages-container" class="messages-container flex-grow-1 p-4">
+                    <!-- Welcome message -->
+                    <div class="system-message text-center my-5">
+                        <h2 class="fw-bold">Welcome to AI Chat</h2>
+                        <p class="text-muted">Ask me anything! I'm powered by g4f and ready to help.</p>
+                    </div>
+                    
+                    <!-- Messages will appear here -->
+                </div>
+                
+                <!-- Input Area -->
+                <div class="input-area p-3 border-top">
+                    <form id="chat-form" class="d-flex">
+                        <input 
+                            id="message-input" 
+                            class="form-control me-2" 
+                            placeholder="Type a message..." 
+                            required>
+                        <button type="submit" id="send-button" class="btn btn-primary rounded-circle">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Marked.js for Markdown Support -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Highlight.js for Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
