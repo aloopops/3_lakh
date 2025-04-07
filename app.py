@@ -81,14 +81,14 @@ def get_models():
             "id": "gpt-4o-mini",
             "name": "GPT-4o"
         }, {
-            "id": "gpt-3.5-turbo",
-            "name": "GPT-3.5 Turbo"
+            "id": "Blackbox",
+            "name": "Blackbox"
         }, {
-            "id": "claude-instant",
-            "name": "Claude Instant"
+            "id": "Cloudflare",
+            "name": "Cloudflare"
         }, {
-            "id": "gemini-pro",
-            "name": "Gemini Pro"
+            "id": "Copilot",
+            "name": "Copilot"
         }]
         return jsonify({'status': 'success', 'models': models})
     except Exception as e:
