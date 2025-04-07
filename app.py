@@ -79,7 +79,7 @@ def get_models():
         # You can customize this list based on what g4f supports
         models = [{
             "id": "gpt-4o-mini",
-            "name": "GPT-4o Mini"
+            "name": "GPT-4o"
         }, {
             "id": "gpt-3.5-turbo",
             "name": "GPT-3.5 Turbo"
