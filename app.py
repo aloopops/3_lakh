@@ -3,6 +3,16 @@ import logging
 from flask import Flask, render_template, request, jsonify
 import g4f
 from g4f.client import Client
+import os
+import logging
+from flask import Flask, render_template, request, jsonify
+import g4f
+from g4f.client import Client
+from flask import make_response
+
+return make_response(jsonify({'status': 'success', 'message': ai_response}), 200)
+
+# Configure logging
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
