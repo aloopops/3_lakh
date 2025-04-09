@@ -15,5 +15,14 @@
     ],
     "env": {
       "PYTHON_VERSION": "3.11"
+    },
+    // vercel.json
+
+ {
+  "functions": {
+    "app/api/**/route.ts": {
+      "maxDuration": 60
     }
+  
+
   }
