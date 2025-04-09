@@ -30,50 +30,44 @@ def index():
 
 
 @app.route('/api/chat', methods=['POST'])
-from flask import make_response
-
-@app.route('/api/chat', methods=['POST'])
 def chat():
     try:
-        # Retrieve data from the request
         data = request.json
         messages = data.get('messages', [])
         model = data.get('model', 'gpt-4o-mini')
 
         # Add system prompt
         system_prompt = {
-            "role": "system",
-            "content": "You are Orion, a helpful AI assistant. You provide accurate, informative, and friendly responses while keeping them concise and relevant. You were made by Abdullah Ali, who is 13 years old."
+            "role":
+            "system",
+            "content":
+            "You are orion helpful AI assistant. You provide accurate, informative, and friendly responses while keeping them concise and relevant and you are make by Abdullah ali who is 13 years old "
         }
 
         # Insert system prompt at the beginning if not already present
-        if not messages or messages[0].get('role') != 'system':  # Fixed this part to ensure the check is correct
+        if not messages or messages[0].get('role') != 'system':
             messages.insert(0, system_prompt)
 
-        # Log the request for debugging
-        logger.debug(f"Sending request to g4f with model: {model} and messages: {messages}")
+        logger.debug(
+            f"Sending request to g4f with model: {model} and messages: {messages}"
+        )
 
-        # Call the g4f API to get the response
+        # Call the g4f API
         response = client.chat.completions.create(model=model,
                                                   messages=messages,
                                                   web_search=False)
 
-        # Extract the AI's response from the API response
         ai_response = response.choices[0].message.content
         logger.debug(f"Received response from g4f: {ai_response}")
 
-        # Return the response to the client
-        return make_response(jsonify({'status': 'success', 'message': ai_response}), 200)
-    
+        return jsonify({'status': 'success', 'message': ai_response})
     except Exception as e:
-        # Log the error for debugging
         logger.error(f"Error in chat endpoint: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f"An error occurred: {str(e)}"
+        }), 500
 
-        # Ensure the error response is valid JSON
-        error_message = f"An error occurred: {str(e)}"
-        
-        # Return a JSON error response
-        return make_response(jsonify({'status': 'error', 'message': error_message}), 500)
 
 
 @app.route('/api/conversations/<conversation_id>', methods=['DELETE'])
